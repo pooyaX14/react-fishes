@@ -1,9 +1,14 @@
 import React from 'react';
+import AddFishForm from './AddFishForm';
 
 class Inventory extends React.Component {
     render() {
         return(
-          <p>Inventory is defined</p>
+        	<div>
+	          <h2>Inventory is defined</h2>
+	          <AddFishForm />
+        		
+        	</div>
         )
     }
 }
