@@ -3,6 +3,7 @@ import Header from './Header';
 import Order from './Order';
 import Inventory from './Inventory';
 import sampleFishes from '../sample-fishes';
+import Fish from './Fish';
 
 class App extends React.Component { // parent component
 	constructor() {
@@ -38,10 +39,17 @@ class App extends React.Component { // parent component
 			<div className="catch-of-the-day">
 				<div className="menu">
 					<Header tagline="Fresh Sea Food Market"/>
+					<ul className="list-of-fishes">
+						{
+							Object
+							.keys(this.state.fishes)
+							.map(key => <Fish key={ key } details={ this.state.fishes[key]}/>) 
+							/*need to add key props so that it can differentiate which fish was edited*/
+						}
+					</ul>
 				</div>
 				<Order />
 				<Inventory add={ this.addFish } loadSamples={ this.loadSamples}/>
-				
 			</div>
 		)
 	}
