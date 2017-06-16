@@ -12,12 +12,14 @@ class App extends React.Component { // parent component
 
 		this.addFish = this.addFish.bind(this);
 		this.loadSamples = this.loadSamples.bind(this);
+		this.addToOrder = this.addToOrder.bind(this);
 		//get initialState
 		this.state = { // storing fish form data in state.
 			fishes:{},
 			order :{}
 		};
 	}
+
 	addFish(fi) {
 			// update our state
 		   const fishes = {...this.state.fishes};
@@ -33,6 +35,18 @@ class App extends React.Component { // parent component
 			fishes:sampleFishes
 		});
 	}
+//console.log(fishes);
+	addToOrder(key) {
+		// take a copy of our state
+		const order = {...this.state.order};
+
+		// update or add the new number of fish ordered
+		order[key] = order[key]+1 || 1;
+		
+		// update our state
+		this.setState({order:order});
+
+	}
 
 	render() {
 		return(
@@ -43,8 +57,12 @@ class App extends React.Component { // parent component
 						{
 							Object
 							.keys(this.state.fishes)
-							.map(key => <Fish key={ key } details={ this.state.fishes[key]}/>) 
+							.map(key => <Fish key={ key } index={key} details={ this.state.fishes[key]} 
+								addToOrder={this.addToOrder}/>) 
 							/*need to add key props so that it can differentiate which fish was edited*/
+							// key={key} this is for react to handle keys 
+							// index={key} if you want to pass down the keys to other components; you'll 
+							// create componenet to do that. we created index props here to do that.
 						}
 					</ul>
 				</div>
