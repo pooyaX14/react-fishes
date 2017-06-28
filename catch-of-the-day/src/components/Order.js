@@ -37,6 +37,7 @@ class Order extends React.Component {
 	    	}
 	    	return prevTotal;
     	}, 0);
+    	
         return(
           <div className="order-wrap">
           	<h2>Your Order</h2>
