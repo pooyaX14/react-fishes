@@ -20,19 +20,33 @@ class App extends React.Component { // parent component
 			order :{}
 		};
 	}
-
+/*so we have our fishes state linking to our firebase database*/
 	componentWillMount() {
+		// this runs right before the <App> is rendered
 		this.ref = base.syncState(`${this.props.params.storeId}/fishes`, 
 		{
 			context:this,
 			state:'fishes'
 		});
+
+		// check if there is any order in localStorage
+
+		const localStorageRef = localStorage.getItem(`order-${this.props.params.storeId}`);
+		if(localStorageRef) {
+			// update our App component's order state
+			this.setState({
+				order:JSON.parse(localStorageRef) // converting String{"fish1:2", fish3:1 ...} back to Object
+			});
+		}
 	}
 
 	componentWillUnmount() {
 		base.removeBinding(this.ref);
 	}
-
+	componentWillUpdate(nextProps, nextState) {
+	  localStorage.setItem(`order-${this.props.params.storeId}`, 
+	  	JSON.stringify(nextState.order));
+	}
 	addFish(fi) {
 			// update our state
 		   const fishes = {...this.state.fishes};
@@ -58,6 +72,7 @@ class App extends React.Component { // parent component
 		
 		// update our state
 		this.setState({order:order});
+		console.log("inside addToOrder app.js" + JSON.stringify(order[key]));
 
 	}
 
@@ -79,7 +94,11 @@ class App extends React.Component { // parent component
 						}
 					</ul>
 				</div>
-				<Order fishes={this.state.fishes} order={this.state.order}/>
+				<Order 
+				fishes={this.state.fishes} 
+				order={this.state.order}
+				params={this.props.params}
+				/>
 				<Inventory add={ this.addFish } loadSamples={ this.loadSamples}/>
 			</div>
 		)
