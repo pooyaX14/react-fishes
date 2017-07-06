@@ -14,6 +14,7 @@ class App extends React.Component { // parent component
 		this.addFish = this.addFish.bind(this);
 		this.loadSamples = this.loadSamples.bind(this);
 		this.addToOrder = this.addToOrder.bind(this);
+		this.updateFish = this.updateFish.bind(this);
 		//get initialState
 		this.state = { // storing fish form data in state.
 			fishes:{},
@@ -35,7 +36,7 @@ class App extends React.Component { // parent component
 		if(localStorageRef) {
 			// update our App component's order state
 			this.setState({
-				order:JSON.parse(localStorageRef) // converting String{"fish1:2", fish3:1 ...} back to Object
+				order:JSON.parse(localStorageRef) // converting String<{"fish1:2", fish3:1 ...}> back to Object
 			});
 		}
 	}
@@ -55,6 +56,11 @@ class App extends React.Component { // parent component
 		   fishes[`fish-${timestamp}`] = fi;
 		   // set state
 		   this.setState({ fishes:fishes });
+	}
+	updateFish(key, updatedFish) {
+		const fishes = {...this.state.fishes};
+		fishes[key] = updatedFish;
+		this.setState({fishes});
 	}
 
 	loadSamples() {
@@ -99,7 +105,12 @@ class App extends React.Component { // parent component
 				order={this.state.order}
 				params={this.props.params}
 				/>
-				<Inventory add={ this.addFish } loadSamples={ this.loadSamples}/>
+				<Inventory 
+				add={ this.addFish } 
+				loadSamples={ this.loadSamples}
+				fishes={this.state.fishes}
+				updateFish={this.updateFish}
+				/>
 			</div>
 		)
 	}
