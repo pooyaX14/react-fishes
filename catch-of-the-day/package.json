@@ -2,13 +2,21 @@
   "name": "cotd",
   "version": "0.0.1",
   "private": true,
+  "engines": {
+    "npm": "6.4.1",
+    "node": "10.15.1"
+  },
   "devDependencies": {
     "autoprefixer-stylus": "0.10.0",
     "concurrently": "3.0.0",
-    "react-scripts": "0.6.1",
+    "react-scripts": "^2.1.8",
     "stylus": "0.54.5"
   },
   "dependencies": {
+    "@firebase/auth": "^0.9.4",
+    "@firebase/auth-types": "^0.5.3",
+    "@firebase/firestore": "^1.0.6",
+    "firebase": "^5.8.6",
     "history": "4.2.0",
     "re-base": "2.2.0",
     "react": "15.3.2",
@@ -26,5 +34,11 @@
   },
   "eslintConfig": {
     "extends": "./node_modules/react-scripts/config/eslint.js"
-  }
+  },
+  "browserslist": [
+    ">0.2%",
+    "not dead",
+    "not ie <= 11",
+    "not op_mini all"
+  ]
 }

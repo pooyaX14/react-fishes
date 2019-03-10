@@ -2,7 +2,7 @@ import React from 'react';
 import Header from './Header'; 
 import Order from './Order';
 import Inventory from './Inventory';
-import sampleFishes from '../sample-fishes';
+import * as sampleFishes from '../sample-fishes';
 import Fish from './Fish';
 import base from '../base';
 
@@ -97,6 +97,7 @@ class App extends React.Component { // parent component
   }
 
   render() {
+    console.log("this.state.fishes", this.state.fishes)
     return(
       <div className="catch-of-the-day">
         <div className="menu">
@@ -136,3 +137,4 @@ App.propTypes = {
   params: React.PropTypes.object.isRequired
 }
 export default App;
+

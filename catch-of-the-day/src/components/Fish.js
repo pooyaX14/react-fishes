@@ -1,5 +1,6 @@
 import React from 'react';
 import { formatPrice } from '../helpers';
+import assorted_diet from '../static/media/assorted_diet.jpg';
 
 class Fish extends React.Component {
 	render() {
@@ -10,9 +11,11 @@ class Fish extends React.Component {
 		 // console.log(details);
 		const isAvailable = details.status === 'available';
 		const buttonText = isAvailable? 'Add To Order' : 'Sold Out!';
+		var image = details.image
+		console.log("image is ", image)
 		return(
 			<li className="menu-fish">
-				<img src={details.image} alt={this.props.details.name} />
+				<img src={ assorted_diet } alt={this.props.details.name} />
 				<h3 className="fish-name">
 					{details.name}
 					<span className="price">{formatPrice(details.price)}</span>
