@@ -1,8 +1,3 @@
-// This is just some sample data so you don't have to think of your own!
-// import { assorted_diet as logo }  from './css/images/assorted_diet.jpg'
-
-// console.log(require('./css/images/assorted_diet.jpg'));
-
 module.exports = {
   fish1: {
     name: 'Pacific Halibut',
