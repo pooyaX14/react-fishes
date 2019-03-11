@@ -24,11 +24,14 @@ var app = firebase.initializeApp({
   apiKey: "AIzaSyDQ3gKhdZPQJaNXn1Wn4SxeQe0F_09FAlM",
   authDomain: "catch-of-the-day-4f0f7.firebaseapp.com",
   databaseURL: "https://catch-of-the-day-4f0f7.firebaseio.com",
-  // storageBucket: "bucket.appspot.com",
-  // messagingSenderId: "xxxxxxxxxxxxxx"
 });
+
 var db = firebase.database(app);
-var base = Rebase.createClass(db);
+var base = Rebase.createClass({
+  apiKey: "AIzaSyDQ3gKhdZPQJaNXn1Wn4SxeQe0F_09FAlM",
+  authDomain: "catch-of-the-day-4f0f7.firebaseapp.com",
+  databaseURL: "https://catch-of-the-day-4f0f7.firebaseio.com",
+});
 
 export default base;
 

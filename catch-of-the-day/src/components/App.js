@@ -6,6 +6,7 @@ import * as sampleFishes from '../sample-fishes';
 import Fish from './Fish';
 import base from '../base';
 
+
 class App extends React.Component { // parent component
   constructor() {
     // In order to use this keyword, one must call super()
@@ -122,11 +123,12 @@ class App extends React.Component { // parent component
           removeFromOrder={this.removeFromOrder}
         />
         <Inventory 
-        add={ this.addFish } 
-        removeFish={this.removeFish}
-        loadSamples={ this.loadSamples}
-        fishes={this.state.fishes}
-        updateFish={this.updateFish}
+          addFish={ this.addFish } 
+          removeFish={this.removeFish}
+          loadSamples={ this.loadSamples}
+          fishes={this.state.fishes}
+          updateFish={this.updateFish}
+          storeId={this.props.params.storeId}
         />
       </div>
     )
